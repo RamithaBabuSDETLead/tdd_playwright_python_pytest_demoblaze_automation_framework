@@ -1,0 +1,7 @@
+login_button = "#login2"
+login_modal = "#logInModal"
+login_username = "#loginusername"
+login_password = "#loginpassword"
+login_submit = "#logInModal button.btn-primary"
+nameofuser = "#nameofuser"
+logout_button = "#logout2"
