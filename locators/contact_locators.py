@@ -1,6 +1,6 @@
-contact_link = "a[data-target='#exampleModal']"     # navbar Contact link
-contact_modal = "#exampleModal"                     # modal container
-contact_modal_label = "#exampleModalLabel"          # modal title
+contact_link = "a[data-target='#exampleModal']"
+contact_modal = "#exampleModal"
+contact_modal_label = "#exampleModalLabel"
 contact_email = "#recipient-email"
 contact_name = "#recipient-name"
 contact_message = "#message-text"

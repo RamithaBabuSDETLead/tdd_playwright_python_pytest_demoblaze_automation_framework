@@ -1,19 +1,25 @@
-from utils import urls, helpers
+import pytest
+from playwright.sync_api import expect
 from pages import about_us_page
-from locators import about_us_locators as about
+import locators.about_us_locators as loc
 
-def test_about_us_modal_opens(page):
-    page.goto(urls.demoblaze_url)
+@pytest.mark.about_us
+def test_about_us_modal_opens(launch_website):
+    page = launch_website
     about_us_page.open_about_us(page)
-    helpers.expect_visible(page, about.about_us_modal_label)
+    expect(page.locator(loc.about_us_modal_label)).to_be_visible()
 
-def test_about_us_video_visible(page):
-    page.goto(urls.demoblaze_url)
+
+@pytest.mark.about_us
+def test_about_us_video_visible(launch_website):
+    page = launch_website
     about_us_page.open_about_us(page)
-    helpers.expect_visible(page, about.about_us_video)
+    expect(page.locator(loc.about_us_video)).to_be_visible()
 
-def test_about_us_modal_closes(page):
-    page.goto(urls.demoblaze_url)
+
+@pytest.mark.about_us
+def test_about_us_modal_closes(launch_website):
+    page = launch_website
     about_us_page.open_about_us(page)
     about_us_page.close_about_us(page)
-    helpers.expect_not_visible(page, about.about_us_modal_label)
+    expect(page.locator(loc.about_us_modal_label)).not_to_be_visible()
