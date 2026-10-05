@@ -1,8 +1,10 @@
-from utils import urls
+import pytest
+
 from pages import remove_cart_page as remove_cart
 from locators import remove_cart_locator as loc
 from playwright.sync_api import expect
 
+@pytest.mark.remove_cart
 def test_remove_from_cart(launch_website):
     page=launch_website
     remove_cart.add_samsung_phone(page)

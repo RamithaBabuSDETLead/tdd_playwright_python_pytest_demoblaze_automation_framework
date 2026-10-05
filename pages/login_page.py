@@ -12,8 +12,8 @@ def open_login_modal(page):
     page.wait_for_timeout(500)  # allow animation
 
 def fill_login_form(page, username, password):
-    page.locator(loc.login_username).fill(username)
-    page.locator(loc.login_password).fill(password)
+    helpers.fill(page, loc.login_username, username)
+    helpers.fill(page, loc.login_password, password)
 
 def submit_login(page):
     submit_btn = page.locator(loc.login_submit)

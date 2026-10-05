@@ -10,3 +10,4 @@ def launch_website(playwright:Playwright):
     browser = data_handle.get_data_from_json("browser", dev_path)
     page = get_web_app(browser,dev_url,playwright)
     yield page
+    page.context.close()

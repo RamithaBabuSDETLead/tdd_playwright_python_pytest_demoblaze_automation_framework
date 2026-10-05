@@ -1,8 +1,10 @@
+import pytest
 from playwright.sync_api import expect
 from test_data import user_data as data
 from pages import login_page
 from locators import login_locators as loc
 
+@pytest.mark.logout
 def test_logout(launch_website):
     page = launch_website
     creds = data.get_valid_user()

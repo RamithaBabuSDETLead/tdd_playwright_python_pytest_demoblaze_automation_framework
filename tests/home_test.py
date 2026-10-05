@@ -1,23 +1,29 @@
-from utils import urls, helpers
+import pytest
+
+from utils import  helpers
 from locators import home_locators as home
 
+@pytest.mark.dashboard
 def test_home_page_loads(launch_website):
     page = launch_website
     page.wait_for_load_state("networkidle")
     helpers.expect_first_visible(page, home.products)
 
+@pytest.mark.dashboard
 def test_navigate_categories(launch_website):
     page = launch_website
     helpers.click(page, home.category_laptops)
     page.wait_for_load_state("networkidle")
     helpers.expect_first_visible(page, home.products)
 
+@pytest.mark.dashboard
 def test_next_page_navigation(launch_website):
     page = launch_website
     helpers.click(page, home.next_button)
     page.wait_for_load_state("networkidle")
     helpers.expect_first_visible(page, home.products)
 
+@pytest.mark.dashboard
 def test_previous_page_navigation(launch_website):
     page = launch_website
     # Only click if enabled (DemoBlaze disables Previous until Next is clicked)
@@ -26,14 +32,17 @@ def test_previous_page_navigation(launch_website):
         page.wait_for_load_state("networkidle")
         helpers.expect_first_visible(page, home.products)
 
+@pytest.mark.dashboard
 def test_homepage_carousel(launch_website):
     page = launch_website
     helpers.expect_first_visible(page, home.carousel)
 
+@pytest.mark.dashboard
 def test_homepage_title(launch_website):
     page = launch_website
     assert page.title() == "STORE"
 
+@pytest.mark.dashboard
 def test_homepage_navigation_links(launch_website):
     page = launch_website
     page.wait_for_load_state("networkidle")

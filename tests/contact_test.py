@@ -1,7 +1,8 @@
-from utils import urls
+import pytest
 from test_data import user_data as data
 from pages import contact_page
 
+@pytest.mark.contact
 def test_contact_form(launch_website):
     page=launch_website
     info = data.get_contact_message()

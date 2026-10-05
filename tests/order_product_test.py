@@ -1,7 +1,9 @@
-from utils import urls
+import pytest
+
 from test_data import user_data
 from pages import order_page
 
+@pytest.mark.cart
 def test_order_product(launch_website):
     page=launch_website
     creds = user_data.get_order_details()
