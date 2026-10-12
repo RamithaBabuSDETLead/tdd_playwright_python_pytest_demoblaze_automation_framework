@@ -43,6 +43,5 @@ QA_Automation_Projects/
 ## ⚙️ Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ramithabgowda/QA_Automation_Projects.git
-   cd QA_Automation_Projects
+   https://github.com/RamithaBabuSDETLead/tdd_playwright_python_pytest_demoblaze_automation_framework.git
 

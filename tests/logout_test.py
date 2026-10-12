@@ -1,12 +1,15 @@
-from utils import helpers
-import locators.login_locators as loc
+import pytest
+from playwright.sync_api import expect
+from test_data import user_data as data
+from pages import login_page
+from locators import login_locators as loc
 
-def login(page, username, password):
-    helpers.click(page, loc.login_button)
-    helpers.fill(page, loc.login_username, username)
-    helpers.fill(page, loc.login_password, password)
-    helpers.click(page, loc.login_submit)
-
-def logout(page):
-    helpers.click(page, loc.logout_button)
-    helpers.expect_not_visible(page, loc.welcome_user)
+@pytest.mark.logout
+def test_logout(launch_website):
+    page = launch_website
+    creds = data.get_valid_user()
+    login_page.perform_login(page, creds["username"], creds["password"])
+    expect(page.locator(loc.welcome_user)).to_be_visible()
+    result = login_page.perform_logout(page)
+    assert result == "success"
+    expect(page.locator(loc.login_button)).to_be_visible()

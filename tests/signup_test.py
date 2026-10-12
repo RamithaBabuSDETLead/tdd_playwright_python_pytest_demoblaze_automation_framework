@@ -1,8 +1,9 @@
-from utils import urls
+import pytest
 from test_data import user_data
 from pages import signup_page
 
-def test_signup(page):
+@pytest.mark.signup
+def test_signup(launch_website):
+    page=launch_website
     creds = user_data.get_signup_user()
-    page.goto(urls.demoblaze_url)
     signup_page.signup(page, creds["username"], creds["password"])

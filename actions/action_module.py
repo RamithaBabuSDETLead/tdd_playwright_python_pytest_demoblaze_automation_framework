@@ -1,7 +1,14 @@
 from playwright.sync_api import expect
 
 def click_element(page, locator, timeout=5000):
-    page.locator(locator).click(timeout=timeout)
+    element = page.locator(locator)
+    element.wait_for(state="visible", timeout=timeout)
+    element.scroll_into_view_if_needed()
+    try:
+        element.click(timeout=timeout)
+    except TimeoutError:
+        element.click(force=True, timeout=timeout)
+
 
 def fill_field(page, locator, value, timeout=5000):
     page.locator(locator).fill(value, timeout=timeout)
